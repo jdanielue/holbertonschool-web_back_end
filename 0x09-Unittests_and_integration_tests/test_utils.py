@@ -29,6 +29,24 @@ class TestAccessNestedMap(unittest.TestCase):
             access_nested_map(nested_map, path)
         self.assertEqual(f"KeyError('{expected}')", repr(e.exception))
 
+
+class TestGetJson(unittest.TestCase):
+    """ Lorem ipsum dolor sit ametn """
+
+    @parameterized.expand([
+        ("http://example.com", {"payload": True}),
+        ("http://holberton.io", {"payload": False})
+    ])
+    def test_get_json(self, test_url, test_payload):
+        """ Lorem ipsum dolor sit amet"""
+        config = {'return_value.json.return_value': test_payload}
+        patcher = patch('requests.get', **config)
+        mock = patcher.start()
+        self.assertEqual(get_json(test_url), test_payload)
+        mock.assert_called_once()
+        patcher.stop()
+
+
 class TestMemoize(unittest.TestCase):
     """ Lorem ipsum dolor sit amet """
 
