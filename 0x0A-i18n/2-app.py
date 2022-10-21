@@ -20,13 +20,13 @@ app.config.from_object(Config)
 
 @app.route('/', methods=['GET'], strict_slashes=False)
 def hello_world() -> str:
-    """Renders a Basic Template for Babel Implementation"""
+    """lorem  Lorem ipsum dolor sit amet, consectetur  """
     return render_template("2-index.html")
 
 
 @babel.localeselector
 def get_locale() -> str:
-    """Select a language translation to use for that request"""
+    """ Lorem ipsum dolor sit amet, consectetur  """
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
